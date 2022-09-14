@@ -620,6 +620,13 @@ ul {
     color: white;
     padding: 5px;
 }
+
+@media (max-width: 767px) {
+    .footer .footer-title {
+        width: fit-content;
+        margin: 10px auto 8px;
+    }
+}
 /* End Footer */
 
 /* Start Animation */
