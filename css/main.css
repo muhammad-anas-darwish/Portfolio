@@ -454,8 +454,7 @@ ul {
 }
 
 .projects .card .content {
-    margin-left: 3%;
-    margin-right: 3%;
+    padding: 0 3%;
     width: 100%;
     position: relative;
 }
