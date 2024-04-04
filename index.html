@@ -1,282 +1,357 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Muhammad Anas Darwish Portfolio">
-    <title>Muhmmad Anas Darwish</title>
+<html class="scroll-smooth	" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Muhammad Anas Darwish Portfolio" />
+    <title>Muhammad Anas Darwish</title>
 
-    <!-- Main Template One File -->
-    <link rel="stylesheet" href="css/main.css">
-    <!-- Render All Elements Normally -->
-    <link rel="stylesheet" href="css/normalize.css">
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <!-- Font Awesome Library -->
-    <link rel="stylesheet" href="css/all.min.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet">
-</head>
-<body>
-    <!-- Start Header -->
-    <div class="header" id="header">
-        <div class="container">
-            <a href="" class="logo">Muhmmad Anas Darwish</a>
-            <ul class="main-nav">
-                <li><a href="#services">Services</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#connect-us">Contact</a></li>
+    <link rel="stylesheet" href="css/all.min.css" />
+
+    <!--  Customize tailwind configuration -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              richblack: "#0D1B2A",
+              oxfordblue: "#1B263B",
+              yinmnblue: "#415A77",
+              silverblue: "#778DA9",
+              platinum: "#E0E1DD",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <style>
+      .v-enter-active,
+      .v-leave-active {
+        transition: opacity 0.3s ease;
+      }
+
+      .v-enter-from,
+      .v-leave-to {
+        opacity: 0;
+      }
+
+      /* carousel */
+      .left-full {
+        left: -100%;
+      }
+
+      .carousel-item {
+        float: left;
+        position: relative;
+        display: block;
+        width: 100%;
+        margin-right: -100%;
+        backface-visibility: hidden;
+      }
+
+      .carousel-item.active {
+        left: 0;
+      }
+    </style>
+
+    <div id="app">
+      <!-- Start Header -->
+      <header class="fixed z-50">
+        <div class="w-screen flex items-center justify-between gap-10 py-3 pl-6 pr-10 bg-oxfordblue text-white">
+          <h1 class="text-2xl font-bold">Muhammad Anas Darwish</h1>
+          <ul class="hidden md:relative md:flex justify-around gap-5">
+            <li class="text-xl"><a href="#services">Services</a></li>
+            <li class="text-xl"><a href="#skills">Skills</a></li>
+            <li class="text-xl"><a href="#projects">Projects</a></li>
+            <li class="text-xl"><a href="#contact-us">Contact</a></li>
+          </ul>
+          <button @click="toggleDropdown" class="block md:hidden fas fa-bars"></button>
+        </div>
+        <!-- dropdown card -->
+        <Transition>
+          <div @click="toggleDropdown" v-show="dropDownVisible" class="md:hidden absolute w-screen h-screen left-0 top-0 backdrop-blur-sm bg-richblack/50">
+            <ul class="absolute bg-oxfordblue p-4 right-2 text-white top-2 rounded-md w-[70%]">
+              <li class="text-xl py-2 hover:text-blue-300 duration-300"><a href="#services">Services</a></li>
+              <li class="text-xl py-2 hover:text-blue-300 duration-300"><a href="#skills">Skills</a></li>
+              <li class="text-xl py-2 hover:text-blue-300 duration-300"><a href="#projects">Projects</a></li>
+              <li class="text-xl py-2 hover:text-blue-300 duration-300"><a href="#contact-us">Contact</a></li>
             </ul>
-        </div>
-    </div>
-    <!-- End Header -->
+          </div>
+        </Transition>
+      </header>
+      <!-- End Header -->
 
-    <!-- Start Main -->
-    <div class="main">
-        <div class="container">
-            <p class="my-name">Hello, I'm Anas</p>
-            <h1>BackEnd Developer</h1>
-            <p class="about-me">I build websites</p>
-            <a class="my-work" href="https://github.com/Muhammad-Anas-Darwish">View My work</a>
-            <div class="social-icons">
-                <a href="https://www.facebook.com/anas.darwish.927"><i class="fa-brands fa-facebook"></i></a>
-                <a href="https://www.instagram.com/anas.darwish.927/"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://github.com/Muhammad-Anas-Darwish"><i class="fa-brands fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/muhammad-anas-darwish-b58875233/"><i class="fa-brands fa-linkedin-in"></i></a>
-            </div>
-        </div>
-    </div>
-    <!-- End Main -->
+      <section>
+        <!-- Start Main -->
+        <article class="h-screen flex justify-around items-center bg-oxfordblue text-platinum p-2">
+          <div>
+            <h1 class="text-2xl md:text-4xl font-bold line-4 leading-normal">
+              Hi,<br />
+              I'am <span class="text-silverblue">Anas</span><br />
+              Full Stack Developer<br />
+            </h1>
+            <a class="block w-fit bg-yinmnblue text-white rounded-lg px-2 py-1 mt-4 text-xl md:text-2xl font-bold" href="https://github.com/muhammad-anas-darwish">View My Work</a>
+            <transition>
+              <div class="flex justify-start gap-3 text-platinum text-2xl mt-4">
+                <a href="https://www.facebook.com/anas.darwish.927"><i class="hover:text-silverblue fa-brands fa-facebook"></i></a>
+                <a href="https://github.com/muhammad-anas-darwish"><i class="hover:text-silverblue fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/muhammad-anas-darwish/"><i class="rounded-full hover:text-silverblue fa-brands fa-linkedin-in"></i></a>
+                <a href="https://codeforces.com/profile/Muhammad_Anas_Darwish"><i class="rounded-full hover:text-silverblue fas fa-code"></i></a>
+              </div>
+            </transition>
+          </div>
+          <div class="hidden md:block bg-silverblue w-64 h-64 rounded-full"></div>
+        </article>
+        <!-- End Main -->
 
-    <!-- Start Services -->
-    <div class="services" id="services">
-        <h2 class="main-title">Services</h2>
-        <div class="container">
-            <div class="card">
-                <i class="fa-solid fa-building-columns"></i>
-                <h3>university student</h3>
-                <p>
-                    I am a third year student in computer science, 
-                    Damascus University And I have experience of backend with Laravel Framework.
-                </p>
+        <!-- Start Services -->
+        <article class="min-h-[calc(100vh-3.5rem)] bg-richblack text-white px-4 py-8 md:px-10 md:py-14" id="services">
+          <h4 class="text-2xl">My <span class="text-2xl text-silverblue">services</span></h4>
+          <h2 class="text-4xl sm:text-5xl font-bold mb-8 md:mb-16">What I Do</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-oxfordblue px-4 py-6 flex items-center flex-col gap-2 rounded-lg w-full">
+              <i class="text-3xl text-silverblue fa-brands fa-laravel"></i>
+              <h3 class="text-2xl font-bold text-center">Backend Developer</h3>
+              <p class="text-center">I excel in programming languages like Python, PHP, and Java script, and have a solid grasp of backend frameworks such as Django, and Laravel. My expertise extends to database management systems like MySQL, and PostgreSQL, as well as RESTful APIs and web services. I am adept at optimizing backend performance and using Git for version control. With strong problem-solving and debugging skills, I also possess a good understanding of software architecture and design patterns.</p>
             </div>
-            <div class="card">
-                <i class="fa-solid fa-building-columns"></i>
-                <h3>Back End</h3>
-                <p>
-                    PHP, Laravel, 
-                    Python, Django,
-                    SQL, MySQL, Rest API.
-                </p>
+            <div class="bg-oxfordblue px-4 py-6 flex items-center flex-col gap-2 rounded-lg w-full">
+              <i class="text-3xl text-silverblue fa-brands fa-vuejs"></i>
+              <h3 class="text-2xl font-bold text-center">Frontend Developer</h3>
+              <p class="text-center">As a frontend developer, I possess a strong command of essential web technologies such as HTML, CSS, and TailwindCSS, enabling me to create visually appealing and responsive designs. my expertise in JavaScript enables me to bring interactivity and dynamic functionality to websites, while my knowledge of Vue.js empowers me to develop robust and scalable single-page applications. My diverse skill set in frontend technologies equips me to deliver innovative and user-friendly solutions that enhance the overall user experience.</p>
             </div>
-            <div class="card">
-                <i class="fa-solid fa-building-columns"></i>
-                <h3>Front End</h3>
-                <p>I learned HTML, CSS, Tailwind And JS. Now I'm learning VueJS.</p>
+            <div class="bg-oxfordblue px-4 py-6 flex items-center flex-col gap-2 rounded-lg w-full">
+              <i class="text-3xl text-silverblue fas fa-cogs"></i>
+              <h3 class="text-2xl font-bold text-center">Problem Solver</h3>
+              <p class="text-center">I possess a strong foundation in problem-solving skills, honed through training in C++, data structures, and algorithms. My proficiency in these areas enables me to approach complex challenges with a systematic and analytical mindset, allowing me to efficiently identify and implement effective solutions. With a deep understanding of how to optimize code performance and design efficient algorithms, I am well-equipped to tackle a wide range of technical problems and deliver high-quality results in my projects.</p>
             </div>
-            <div class="card">
-                <i class="fa-solid fa-building-columns"></i>
-                <h3>Skills</h3>
-                <p>
-                    Algorithms, Data Structures,
-                    Design Pattern,
-                    Git and GitHub.
-                </p>
-            </div>
-        </div>
-    </div>
-    <!-- End Services -->
+          </div>
+        </article>
+        <!-- End Services -->
 
-    <!-- Start Skills -->
-    <div class="skills" id="skills">
-        <h2 class="main-title">Skills</h2>
-        <div class="container">
-            <div class="card">
-                <img src="imgs/php.svg" alt="PHP" title="PHP">
-            </div>
-            <div class="card">
-                <img src="imgs/laravel.svg" alt="Laravel" title="Laravel">
-            </div>
-            <div class="card">
-                <img src="imgs/js.svg" alt="Js" title="Js">
-            </div>
-            <div class="card">
-                <img src="imgs/vuejs.svg" alt="VueJS" title="VueJS">
-            </div>
-            <div class="card">
-                <img src="imgs/tailwind.svg" alt="Tailwind" title="Tailwind">
-            </div>
-            <div class="card">
-                <img src="imgs/sql.svg" alt="SQL" title="SQL">
-            </div>
-            <div class="card">
-                <img src="imgs/mysql.svg" alt="MySQL" title="MySQL">
-            </div>
-            <div class="card">
-                <img src="imgs/algorithms.svg" alt="Algorithms & Data Structures" title="Algorithms & Data Structures">
-            </div>
-            <div class="card">
-                <img src="imgs/python.svg" alt="Python" title="Python">
-            </div>
-            <div class="card">
-                <img src="imgs/django.svg" alt="Django" title="Django">
-            </div>
-            <div class="card">
-                <img src="imgs/git.svg" alt="Git" title="Git">
-            </div>
-            <div class="card">
-                <img src="imgs/github.svg" alt="Github" title="Github">
-            </div>
-        </div>
-    </div>
-    <!-- End Skills -->
+        <!-- Start Skills -->
+        <article class="min-h-[calc(100vh-3.5rem)] bg-oxfordblue text-white px-4 py-8 md:px-10 md:py-14" id="skills">
+          <h2 class="text-4xl sm:text-5xl font-bold mb-8 md:mb-16">My Skills</h2>
 
-    <!-- Start Projects  -->
-    <div class="projects" id="projects">
-        <h2 class="main-title">Projects</h2>
-        <div class="container">
-            <div class="card">
-                <img src="imgs/chat.png" alt="Chat Website image">
-                <div class="content">
-                    <div class="info">
-                        <a href="https://github.com/Muhammad-Anas-Darwish/chat">
-                            <h3>Chat App</h3>
-                        </a>
-                        <p>Laravel & VueJS project, Chat App</p>
-                    </div>
-                    <div class="code">
-                        <a href="https://github.com/Muhammad-Anas-Darwish/chat">code</a>
-                        <i class="fas fa-long-arrow-alt-right"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="imgs/school.png" alt="School Project Image">
-                <div class="content">
-                    <div class="info">
-                        <a href="https://github.com/Muhammad-Anas-Darwish/school">
-                            <h3>School System</h3>
-                        </a>
-                        <p>Laravel API project, Sends students' grades to parents.</p>
-                    </div>
-                    <div class="code">
-                        <a href="https://github.com/Muhammad-Anas-Darwish/school">code</a>
-                        <i class="fas fa-long-arrow-alt-right"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="imgs/food-delivery.png" alt="Food delivery image">
-                <div class="content">
-                    <div class="info">
-                        <a href="https://github.com/Muhammad-Anas-Darwish/Food_Delivery">
-                            <h3>Food Delivery</h3>
-                        </a>
-                        <p>Laravel API project, paybal payment, google authentication.</p>
-                    </div>
-                    <div class="code">
-                        <a href="https://github.com/Muhammad-Anas-Darwish/Food_Delivery">code</a>
-                        <i class="fas fa-long-arrow-alt-right"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="imgs/internet-cafe.png" alt="Internet Cafe website image">
-                <div class="content">
-                    <div class="info">
-                        <a href="https://silverinternetcafe.000webhostapp.com/">
-                            <h3>Internet Cafe</h3>
-                        </a>
-                        <p>PHP internet cafe management, authentication.</p>
-                    </div>
-                    <div class="code">
-                        <a href="https://github.com/Muhammad-Anas-Darwish/internet-cafe">code</a>
-                        <i class="fas fa-long-arrow-alt-right"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="imgs/silverbooklibrary.png" alt="silver book library website image">
-                <div class="content">
-                    <div class="info">
-                        <a href="https://silverlibrary.pythonanywhere.com/">
-                            <h3>Silver Book Library</h3>
-                        </a>
-                        <p>Django rest api library management</p>
-                    </div>
-                    <div class="code">
-                        <a href="https://github.com/Muhammad-Anas-Darwish/Django_Library">code</a>
-                        <i class="fas fa-long-arrow-alt-right"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="imgs/silver_market.png" alt="Silver market website image">
-                <div class="content">
-                    <div class="info">
-                        <a href="https://anasdarm.pythonanywhere.com/">
-                            <h3>Silver Market</h3>
-                        </a>
-                        <p>Django ecommerce system, paybal payment, google authentication.</p>
-                    </div>
-                    <div class="code">
-                        <a href="https://github.com/MHD-Anas-Darwish-2/silver_market">code</a>
-                        <i class="fas fa-long-arrow-alt-right"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="imgs/3.png" alt="Third website image">
-                <div class="content">
-                    <div class="info">
-                        <a href="https://muhammad-anas-darwish.github.io/HTML_And_CSS_Template_three/">
-                            <h3>HTML And CSS Template Three</h3>
-                        </a>
-                        <p>I learned it from Elzero Web School</p>
-                    </div>
-                    <div class="code">
-                        <a href="https://github.com/Muhammad-Anas-Darwish/HTML_And_CSS_Template_three">code</a>
-                        <i class="fas fa-long-arrow-alt-right"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Projects  -->
+          <div class="relative slide">
+            <div class="carousel-inner relative overflow-hidden">
+              <div v-for="(card, i) in skillsCards" :id="`slide-${i}`" :key="i" @mousedown="stopInterval" @mouseup="resumeInterval" @mouseleave="resumeInterval" :class="`${active === i ? 'active' : 'left-full'}`" class="carousel-item inset-0 relative w-full transform transition-all duration-500 ease-in-out">
+                <div :class="card['backgroundColor']" class="relative md:w-[80%] min-h-[calc(100vh-16rem)] rounded-lg flex flex-col md:flex-row justify-around items-center mx-auto p-2">
+                  <!-- previous & next buttons -->
+                  <div @click="previousSkillsCard" v-show="active > 0" class="absolute cursor-pointer left-2 sm:left-6 text-white rounded-full p-5 bg-white/10 backdrop-blur-2xl fas fa-chevron-left"></div>
+                  <div @click="nextSkillsCard" v-show="active < skillsCards.length - 1" class="absolute cursor-pointer right-2 sm:right-6 text-white rounded-full bg-white/10 backdrop-blur-lg p-5 fas fa-chevron-right"></div>
 
-    <!-- Start Connect-Us -->
-    <div class="connect-us" id="connect-us">
-        <h2 class="main-title">let's work together</h2>
-        <div class="container">
-            <div class="card">
-                <i class="fa-solid fa-phone"></i>
-                <h3>Phone</h3>
-                <p>+963 994099037</p>
-            </div>
-            <div class="card">
-                <i class="fa-solid fa-envelope"></i>
-                <h3>Email</h3>
-                <p>muhammadanasdarwish1@gmail.com</p>
-            </div>
-        </div>
-    </div>
-    <!-- End Connect-Us -->
+                  <div>
+                    <h2 class="text-3xl md:text-5xl font-bold mb-2 text-center md:text-left">{{ card['title'] }}</h2>
+                    <ul v-for="skill in card['skills']" :key="skill" class="text-2xl">
+                      <li class="w-fit m-auto md:ml-8 text-center"><span class="hidden md:inline-block">-</span> {{ skill }}</li>
+                    </ul>
+                  </div>
 
-    <!-- Start Footer -->
-    <div class="footer">
-        <p class="footer-title">
-            Copyrights @ 
-            <span>Muhammad Anas Darwish</span>
-        </p>
-        <div class="social-icons">
-            <a href="https://www.facebook.com/anas.darwish.927"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://www.instagram.com/anas.darwish.927/"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://github.com/Muhammad-Anas-Darwish"><i class="fa-brands fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/muhammad-anas-darwish-b58875233/"><i class="fa-brands fa-linkedin-in"></i></a>
-        </div>
+                  <div class="flex md:flex-col items-center justify-center gap-4">
+                    <div v-for="(icon, i) in card['icons']" :key="icon" :class="`md:ml-${i * 16}` " class="text-4xl w-12 h-12 md:w-20 md:h-20 bg-silverblue/20 flex justify-center items-center text-platinum hover:border-2 rounded-lg hover:border-platinum hover:shadow-[0_0_2px_#E0E1DD,inset_0_0_2px_#E0E1DD,0_0_5px_#E0E1DD,0_0_15px_#E0E1DD,0_0_30px_#E0E1DD]">
+                      <i :class="icon"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <!-- End Skills -->
+
+        <!-- Start Projects -->
+        <article class="min-h-[calc(100vh-3.5rem)] bg-richblack text-platinum px-4 py-8 md:px-10 md:py-14" id="projects">
+          <h2 class="w-fit text-4xl sm:text-5xl font-bold mb-8 mx-auto">Projects</h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div v-for="(card, i) in projectsCards" :key="card.title" class="flex flex-col justify-between w-full bg-oxfordblue rounded-lg overflow-hidden">
+							<div>
+								<img :src="card.image" />
+								<div class="p-2 sm:p-4">
+									<h2 class="text-3xl font-bold mb-3 text-center">{{ card.title }}</h2>
+									<ul class="flex flex-wrap justify-center gap-4 text-oxfordblue text-lg sm:text-xl mb-3">
+										<li v-for="skill in card.skills" :key="skill" class="py-1 px-2 rounded-lg bg-silverblue">{{ skill }}</li>
+									</ul>
+									<p class="texl-lg sm:text-xl text-center">{{ card.description }}</p>
+								</div>
+							</div>
+
+              <a class="w-full py-1 sm:py-2 flex justify-center bg-silverblue text-oxfordblue text-lg sm:text-xl font-bold hover:bg-oxfordblue hover:text-silverblue border-t-2 border-silverblue duration-500 ease-in-out" :href="card.link">View code</a>
+            </div>
+          </div>
+        </article>
+        <!-- End Projects -->
+
+        <!-- Start Contact-Us -->
+        <article class="min-h-[calc(100vh-3.5rem)] bg-oxfordblue text-platinum px-4 py-8 md:px-20 md:py-14" id="contact-us">
+          <h2 class="w-fit text-4xl sm:text-5xl font-bold mb-8 mx-auto">LET'S WORK TOGETHER</h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-richblack flex p-4 sm:p-8 rounded-lg flex-col items-center justify-center overflow-hidden">
+              <i class="text-4xl sm:text-5xl text-silverblue fa-solid fa-phone mb-2 sm:mb-4"></i>
+              <h3 class="text-3xl sm:text-4xl font-bold mb-2 sm:mb-4">Phone</h3>
+              <p class="text-2xl sm:text-3xl text-silverblue text-center">
+								<a href="tel:+963994099037">+963<wbr /> 994 099 037</a>
+							</p>
+            </div>
+            <div class="bg-richblack flex p-4 sm:p-8 rounded-lg flex-col items-center justify-center overflow-hidden">
+              <i class="text-4xl sm:text-5xl text-silverblue fa-solid fa-envelope mb-2 sm:mb-4"></i>
+              <h3 class="text-3xl sm:text-4xl font-bold mb-2 sm:mb-4">Email</h3>
+              <p class="text-2xl sm:text-3xl text-silverblue text-center">
+								<a href="mailto:MuhammadAnasDarwish1@gmail.com"><span>Muhammad<wbr />AnasDarwish1</span><wbr />@gmail.com</a>
+							</p>
+            </div>
+          </div>
+        </article>
+        <!-- End Contact-Us -->
+      </section>
+
+      <!-- Start Footer -->
+      <footer class="bg-richblack text-platinum display flex flex-col sm:flex-row justify-between p-6">
+        <p class="text-xl md:text-3xl text-center">Copyrights @<span class="text-silverblue">Muhammad Anas Darwish</span></p>
+        <ul class="flex flex-row justify-around gap-4 text-xl md:text-3xl mt-4 sm:mt-0">
+          <li>
+            <a href="https://www.facebook.com/anas.darwish.927"><i class="hover:text-silverblue duration-500 ease-in-out fa-brands fa-facebook"></i></a>
+          </li>
+          <li>
+            <a href="https://github.com/muhammad-anas-darwish"><i class="hover:text-silverblue duration-500 ease-in-out fa-brands fa-github"></i></a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/muhammad-anas-darwish/"><i class="rounded-full duration-500 ease-in-out hover:text-silverblue fa-brands fa-linkedin-in"></i></a>
+          </li>
+          <li>
+            <a href="https://codeforces.com/profile/Muhammad_Anas_Darwish"><i class="rounded-full duration-500 ease-in-out hover:text-silverblue fas fa-code"></i></a>
+          </li>
+        </ul>
+      </footer>
+      <!-- End Footer -->
     </div>
-    <!-- End Footer -->
-</body>
+
+    <script>
+      const { createApp, ref } = Vue;
+
+      const app = createApp({
+        setup() {},
+        data() {
+          return {
+            dropDownVisible: false,
+            isClicked: false,
+            interval: null,
+            active: 0,
+            skillsCards: [
+              {
+                title: "Backend",
+                skills: ["PHP", "Laravel", 'Python', 'Django', 'Restful API', "MySQL"],
+                icons: ["fa-brands fa-python", "fa-brands fa-laravel", "fa-brands fa-php"],
+                backgroundColor: "bg-gradient-to-r from-yellow-700 to-yellow-300",
+              },
+              {
+                title: "Frontend",
+                skills: ["HTML", "CSS", "TailwindCSS", "Java Script", "VueJs"],
+                icons: ["fa-brands fa-css3", "fa-brands fa-js", "fa-brands fa-vuejs"],
+                backgroundColor: "bg-gradient-to-r from-blue-800 to-blue-400",
+              },
+              {
+                title: "Technical skills",
+                skills: ["MySQL", "Git", "Bash", "Postman", "Using VS Code"],
+                icons: ["fa-brands fa-git", "fa-solid fa-terminal", "fa-solid fa-database"],
+                backgroundColor: "bg-gradient-to-r from-red-800 to-red-400",
+              },
+              {
+                title: "Soft skills",
+                skills: ["Fast Learner", "Self-Learner", "Team Player", "Time Management"],
+                icons: ["fa-brands fa-leanpub", "fa-solid fa-people-carry-box", "fa-regular fa-clock"],
+                backgroundColor: "bg-gradient-to-r from-green-800 to-green-400",
+              },
+            ],
+						projectsCards: [
+							{
+								"title": "Chat App",
+								"description": "The website is a project that was built using Laravel and Vue.js. It includes features such as adding and editing contact information, sending real-time messages through Pusher, and the ability to block users.",
+								"image": "imgs/chat.png",
+								"link": "https://github.com/muhammad-anas-darwish/Chat",
+								"skills": ["PHP", "Laravel", "HTML", "TailwindCSS", "Js", "VueJs", "Pusher"],
+							},
+							{
+								"title": "Food Delivery",
+								"description": "The API website is for online food delivery, payment by PayPal, and it supports logging in with Google authentication.",
+								"image": "imgs/food-delivery.png",
+								"link": "https://github.com/muhammad-anas-darwish/Food_Delivery",
+								"skills": ["PHP", "Laravel", "Restful API"],
+							},
+							{
+								"title": "School System",
+								"description": "Our Laravel project is a school management system that provides parents with access to their child's exam marks, listening marks, and other important information related to their education. this web application streamlines the communication process between schools and parents, ensuring that parents are always up-to-date with their child's progress.",
+								"image": "imgs/school.png",
+								"link": "https://github.com/muhammad-anas-darwish/school",
+								"skills": ["PHP", "Laravel"],
+							},
+							{
+								"title": "Book Library",
+								"description": "A library management site that supports the ability to borrow and return books, contains an API using the rest API framework.",
+								"image": "imgs/silverbooklibrary.png",
+								"link": "https://github.com/MHD-Anas-Darwish-2/silver_library",
+								"skills": ["Python", "Django", "Restful API"],
+							},
+							{
+								"title": "Clothes Market",
+								"description": "I have developed a website using Django RESTful API to manage a library, which includes CRUD operations for adding books and their authors, creating users, and supporting book borrowing and returning functionality. The website allows users to easily add, edit, and delete books, authors, and user information.",
+								"image": "imgs/silver_market.png",
+								"link": "https://github.com/MHD-Anas-Darwish-2/silver_market",
+								"skills": ["Python", "Django", "HTML", "CSS"],
+							},
+						],
+          };
+        },
+        methods: {
+          toggleDropdown: function () {
+            // hide and show dropdown
+            this.dropDownVisible = !this.dropDownVisible;
+          },
+          changeSkillsCard: function (time = 3000) {
+            clearInterval(this.interval);
+
+            this.interval = setInterval(() => {
+              if (!this.isClicked) {
+                this.active = (this.active + 1) % this.skillsCards.length;
+              }
+            }, time);
+          },
+          previousSkillsCard: function () {
+            // decrease active number
+            if (this.active < 1) return ;
+
+            this.changeSkillsCard(3000);
+            this.active--;
+          },
+          nextSkillsCard: function () {
+            // increase active number
+            if (this.active >= this.skillsCards.length - 1) return ;
+            
+            this.changeSkillsCard(3000);
+            this.active++;
+          },
+          stopInterval() {
+            this.isClicked = true;
+          },
+          resumeInterval() {
+            this.isClicked = false;
+          }
+        },
+        mounted() {
+          this.changeSkillsCard(3000);
+        },
+      });
+
+      app.mount("#app");
+    </script>
+  </body>
 </html>
